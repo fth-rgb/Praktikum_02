@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasil Link - Kotopedia</title>
+<style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f9f9f9; }
+    .result-container { border: 2px solid #000; padding: 20px; max-width: 600px; margin: 0 auto; background-color: white; }
+    h2 { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; }
+    .product-info { display: flex; gap: 20px; margin-top: 20px; }
+    .product-image img { width: 150px; height: 150px; border: 2px solid #000; object-fit: cover; }
+    .details { flex: 1; font-size: 14px; line-height: 1.6; }
+    .details p { margin: 5px 0; }
+    .highlight { font-weight: bold; }
+    .success-msg { background-color: #e8f5e9; color: #2e7d32; padding: 10px; text-align: center; border: 1px solid #c8e6c9; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+    <div class="result-container">
+        <div class="success-msg">Pesanan berhasil dibuat! Berikut adalah detail transaksinya:</div>
+        
+        <h2>Detail Pesanan Kotopedia</h2>
+        
+        <div class="product-info">
+            <div class="product-image">
+                <img id="res-gambar" src="" alt="Gambar Produk">
+            </div>
+            
+            <div class="details">
+                <p><span class="highlight">Judul:</span> <span id="res-title">-</span></p>
+                <p><span class="highlight">Deskripsi:</span><br> <span id="res-desc" style="white-space: pre-line;">-</span></p>
+                <hr style="border-top: 1px dashed #ccc;">
+                <p><span class="highlight">Nomor Rekening:</span> <span id="res-acc">-</span></p>
+                
+                <!-- Bank dan Account Holder sekarang ditangkap di sini -->
+                <p><span class="highlight">Bank:</span> <span id="res-bank">-</span></p>
+                <p><span class="highlight">Atas Nama (Holder):</span> <span id="res-holder">-</span></p>
+                <p><span class="highlight">Jumlah Transaksi:</span> <span id="res-trans">-</span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('res-gambar').src = urlParams.get('gambar') || 'placeholder.jpg';
+        document.getElementById('res-title').innerText = urlParams.get('title') || 'Tidak ada judul';
+        document.getElementById('res-desc').innerText = urlParams.get('description') || 'Tidak ada deskripsi';
+        document.getElementById('res-acc').innerText = urlParams.get('account_number') || '-';
+        document.getElementById('res-bank').innerText = urlParams.get('bank') || '-';
+        document.getElementById('res-holder').innerText = urlParams.get('account_holder') || '-';
+        
+        document.getElementById('res-trans').innerText = urlParams.get('transaction_count') || '-';
+    </script>
+
+</body>
+</html>
